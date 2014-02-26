@@ -2,15 +2,16 @@
   display: none;
 }
 
-#show-contact {
+#category-input {
   display: none;
 }
 
-.contact {
+.category {
   cursor: pointer;
   color: #08c;
 }
 
-.contact:hover {
+.category:hover {
   text-decoration: underline;
 }
+

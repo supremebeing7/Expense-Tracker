@@ -12,7 +12,27 @@
       <h1>Expense Organizer</h1>
 
       <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-4">
+          <h2>Categories:</h2>
+          <ul id="categories">
+
+          </ul>
+          <form id="new-category">
+            <div class="form-group">
+              <div id="category-input">
+                <label for="new-category-name">Name</label>
+                <input type="text" class="form-control" id="new-category-name" placeholder="New category">
+              </div>
+            </div>
+            
+            <span class="btn btn-primary" id="show-category">Add Category</span>
+
+            <button type="submit" class="btn">Add</button>
+          </form> 
+        </div>
+
+
+        <div class="col-md-4">
           <h2>Add purchase:</h2>
           <form id="new-purchase">
             <div class="form-group">
@@ -27,15 +47,10 @@
             <span class="btn btn-primary" id="add-address">Add Category</span>
 
             <button type="submit" class="btn">Track!</button>
-          </form>
-
-          <h2>Categories:</h2>
-          <ul id="categories">
-
-          </ul>
+          </form>          
         </div>
 
-        <div class="col-md-6">
+        <div class="col-md-4">
           <div id="show-purchases">
             <h2>Purchases</h2>
 

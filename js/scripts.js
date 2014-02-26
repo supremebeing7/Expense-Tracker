@@ -1,16 +1,38 @@
+var Purchase = {
+  initialize: function(description, amount) {
+    this.description = description;
+    this.amount = amount;
+  },
+  create: function(description, amount) {
+    var newPurchase = Object.create(Purchase);
+    newPurchase.initialize(description, amount);
+    return newPurchase;
+  }
+} 
 
-
-
-
-
-
-
-
-
-
-
-
-
+var Category = {
+  initialize: function(name) {
+    this.name = name;
+    this.purchases = [];
+  },
+  create: function(name) {
+    var newCategory = Object.create(Category);
+    newCategory.initialize(name);
+    if(newCategory.valid()) {
+      return newCategory;  
+    } else {
+      alert('Categories require names to be used.');
+      return false;
+    }
+  },
+  valid: function() {
+    if (this.name === undefined) {
+      return false;
+    } else {
+      return this.name.length > 0;
+    }
+  }
+}
 
 
 $(document).ready(function() {
@@ -22,10 +44,9 @@ $(document).ready(function() {
   $("form#new-purchase").submit(function(event) {
     event.preventDefault();
 
-    var inputtedDescription = $("input#new-description").val();
-    var inputtedAmount = $("input#new-amount").val();
+    var newPurchase = Purchase.create($("input#new-description").val(), $("input#new-amount").val());
 
-    $("#purchase").append("<tr><td>" + inputtedDescription + "</td><td>" + inputtedAmount + "</td></tr>");
+    $("#purchase").append("<tr><td>" + newPurchase.description + "</td><td>" + newPurchase.amount + "</td></tr>");
     this.reset();      
 
     //Ask about this being within/outside of if test.
@@ -49,4 +70,19 @@ $(document).ready(function() {
     //   this.reset();
     // }
   });
+
+  $("form#new-category").submit(function(event) {
+    event.preventDefault();
+
+    var newCategory = Category.create($("input#new-category-name").val());
+
+    $("ul#categories").append("<li><span class='category'>" + newCategory.name + "</span></li>");
+    $("#category-input").hide();
+    this.reset();      
+  });
+
+  $("#show-category").click(function() {
+    $("#category-input").show();
+  });
 });
+
