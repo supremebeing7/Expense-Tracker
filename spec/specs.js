@@ -53,4 +53,16 @@ describe('Category', function() {
       testCategory.should.equal(false);
     });
   });
+  describe('createPurchase', function() {
+    it('creates a purchase inside of a category', function() {
+      var testCategory = Category.create("Hats");
+      var testPurchase = testCategory.createPurchase("Fedora", "$50");
+      Purchase.isPrototypeOf(testPurchase).should.equal(true);
+    });
+    it('adds the purchase to the purchases array', function() {
+      var testCategory = Category.create("Hats");
+      var testPurchase = testCategory.createPurchase("Bowler", "$40");
+      testCategory.purchases.should.eql([testPurchase]);
+    })
+  });
 });

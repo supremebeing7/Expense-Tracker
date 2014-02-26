@@ -2,6 +2,10 @@
   display: none;
 }
 
+.show-purchases {
+  display: none;
+}
+
 #category-input {
   display: none;
 }
