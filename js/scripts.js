@@ -86,7 +86,7 @@ $(document).ready(function() {
     var newCategory = Category.create($("input#new-category-name").val());
 
     if(newCategory != false) {
-      $("#categories").append("<tr><td class='category'>" + newCategory.name + "</td><td class='totalspent " + newCategory.removesSpaces() + "'>$" + newCategory.totalSpent() + "</td><td class='" + newCategory.removesSpaces() + newCategory.removesSpaces() + "'>" + newCategory.totalSpentEverywhere() + "</td></tr>");  
+      $("#categories").append("<tr><td class='category'>" + newCategory.name + "</td><td class='totalspent " + newCategory.removesSpaces() + "'>$" + newCategory.totalSpent() + "</td><td class='" + newCategory.removesSpaces() + newCategory.removesSpaces() + "'></td></tr>");  
       // <td class='" + newCategory.name + newCategory.name + "'>" + newCategory.totalSpentEverywhere() + "</td>
     }
     $("#category-input").hide();
@@ -120,6 +120,8 @@ $(document).ready(function() {
         $("." + category.removesSpaces()).text("$" + category.totalSpent());
         $("." + category.removesSpaces() + category.removesSpaces()).text((category.totalSpent() / category.totalSpentEverywhere() * 100).toFixed(0) + "%");
       });
+      $(".total-spent").text("");
+      $(".total-spent").append("<tr><td>Total spent:</td><td>$" + currentCategory.totalSpentEverywhere() + "</td></tr>");
       this.reset();
     }      
   });
