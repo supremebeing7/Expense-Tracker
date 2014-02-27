@@ -94,4 +94,14 @@ describe('Category', function() {
       testCategory2.totalSpentEverywhere().should.equal(1070);
     });
   });
+  describe('removesSpaces', function() {
+    it('takes an input and removes the spaces', function() {
+      var testCategory = Category.create("Casey Jones");
+      testCategory.removesSpaces().should.equal("CaseyJones");
+    });
+    it('takes an input and removes multiple spaces', function() {
+      var testCategory = Category.create("Casey Jones the Third");
+      testCategory.removesSpaces().should.equal("CaseyJonestheThird");
+    });
+  });
 });

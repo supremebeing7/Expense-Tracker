@@ -68,6 +68,11 @@ var Category = {
       total += category.totalSpent();
     });
     return total;
+  },
+  removesSpaces: function() {
+    var withoutSpaces = "";
+    withoutSpaces = this.name.replace(/\s/g, "");
+    return withoutSpaces;
   }
 }
 
@@ -81,7 +86,7 @@ $(document).ready(function() {
     var newCategory = Category.create($("input#new-category-name").val());
 
     if(newCategory != false) {
-      $("#categories").append("<tr><td class='category'>" + newCategory.name + "</td><td class='totalspent " + newCategory.name + "'>$" + newCategory.totalSpent() + "</td><td class='" + newCategory.name + newCategory.name + "'>" + newCategory.totalSpentEverywhere() + "</td></tr>");  
+      $("#categories").append("<tr><td class='category'>" + newCategory.name + "</td><td class='totalspent " + newCategory.removesSpaces() + "'>$" + newCategory.totalSpent() + "</td><td class='" + newCategory.removesSpaces() + newCategory.removesSpaces() + "'>" + newCategory.totalSpentEverywhere() + "</td></tr>");  
       // <td class='" + newCategory.name + newCategory.name + "'>" + newCategory.totalSpentEverywhere() + "</td>
     }
     $("#category-input").hide();
@@ -112,8 +117,8 @@ $(document).ready(function() {
         $("#purchase").append("<tr><td>" + purchase.description + "</td><td>$" + purchase.amount + "</td></tr>");
       });
       Category.all.forEach(function(category) {
-        $("." + category.name).text("$" + category.totalSpent());
-        $("." + category.name + category.name).text((category.totalSpent() / category.totalSpentEverywhere() * 100).toFixed(0) + "%");
+        $("." + category.removesSpaces()).text("$" + category.totalSpent());
+        $("." + category.removesSpaces() + category.removesSpaces()).text((category.totalSpent() / category.totalSpentEverywhere() * 100).toFixed(0) + "%");
       });
       this.reset();
     }      
